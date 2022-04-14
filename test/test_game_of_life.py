@@ -7,7 +7,7 @@ from src.game_of_life import GameOfLife
 class GameOfLifeTest(unittest.TestCase):
 
     def test_load_game_state(self):
-        pattern_path = "pattern/ship.txt"
+        pattern_path = "patterns/ship.txt"
         game = GameOfLife(pattern_path)
 #         fake_stdout = io.StringIO()
 
