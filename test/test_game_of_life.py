@@ -16,7 +16,7 @@ class GameOfLifeTest(unittest.TestCase):
         output = fake_stdout.getvalue()
         fake_stdout.close()
 
-        self.assertEqual(output, "")
+        self.assertEqual(output, "\n")
 
     def test_communal_cell_lives(self):
         game = GameOfLife()
@@ -28,7 +28,19 @@ class GameOfLifeTest(unittest.TestCase):
         output = fake_stdout.getvalue()
         fake_stdout.close()
 
-        self.assertEqual(output, "1,1 1,2 2,1 2,2")
+        self.assertEqual(output, "1,1 1,2 2,1 2,2\n")
+
+    def test_new_cell_lives(self):
+        game = GameOfLife()
+        fake_stdout = io.StringIO()
+
+        with contextlib.redirect_stdout(fake_stdout):
+            game.run("1,1 1,2 2,1")
+
+        output = fake_stdout.getvalue()
+        fake_stdout.close()
+
+        self.assertEqual(output, "1,1 1,2 2,1 2,2\n")
     
     # def test_oscilating_cell(self):
     #     game = GameOfLife()
