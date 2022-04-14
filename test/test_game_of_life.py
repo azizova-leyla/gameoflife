@@ -6,16 +6,18 @@ from src.game_of_life import GameOfLife
 
 class GameOfLifeTest(unittest.TestCase):
 
-    def test_single_cell_dies(self):
-        game = GameOfLife()
-        fake_stdout = io.StringIO()
+    def test_load_game_state(self):
+        pattern_path = "pattern/ship.txt"
+        game = GameOfLife(pattern_path)
+#         fake_stdout = io.StringIO()
 
-        with contextlib.redirect_stdout(fake_stdout):
-            game.run("1,1")
+#         with contextlib.redirect_stdout(fake_stdout):
+        board = game.get_board()
+        self.assertEqual(board.livingCellsCount(), 10)
 
-        output = fake_stdout.getvalue()
-        fake_stdout.close()
+#         output = fake_stdout.getvalue()
+#         fake_stdout.close()
 
-        self.assertEqual(output, "\n")
+#         self.assertEqual(output, "")
 
 
