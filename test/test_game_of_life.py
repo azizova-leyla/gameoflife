@@ -42,14 +42,14 @@ class GameOfLifeTest(unittest.TestCase):
 
         self.assertEqual(output, "1,1 1,2 2,1 2,2\n")
     
-    # def test_oscilating_cell(self):
-    #     game = GameOfLife()
-    #     fake_stdout = io.StringIO()
+    def test_oscilating_cell(self):
+        game = GameOfLife()
+        fake_stdout = io.StringIO()
 
-    #     with contextlib.redirect_stdout(fake_stdout):
-    #         game.run("1,1 1,2 2,1 2,2")
+        with contextlib.redirect_stdout(fake_stdout):
+            game.run("2,1 2,2 2,3")
 
-    #     output = fake_stdout.getvalue()
-    #     fake_stdout.close()
+        output = fake_stdout.getvalue()
+        fake_stdout.close()
 
-    #     self.assertEqual(output, "1,1 1,2 2,1 2,2")
+        self.assertEqual(output, "1,2 2,2 2,3")

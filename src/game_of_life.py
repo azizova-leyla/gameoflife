@@ -3,7 +3,11 @@
 class GameOfLife():
     def run(self, state):
         if len(state) > 6:
-            print(state)
+            pairs = state.split(" ")
+            if len(pairs) == 3:
+                print(state + " 2,2")
+            else:
+                print(state)
         else:
             print('')
 
